@@ -15,7 +15,7 @@ const Parents = () => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token')
     const url = 'http://127.0.0.1:8000/api/tevai'
-
+    const [orders, setOrders] = useState([])
 
 
     useEffect(() => {
@@ -63,6 +63,32 @@ const Parents = () => {
             })
     }
 
+    
+    const handleOrder = (id) => {
+ 
+        setLoading(true)
+
+        axios.post('http://127.0.0.1:8000/api/orders', {
+            tevai_id: id
+        }, 
+        {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(resp => {
+            if (resp.status === 200) {
+                setLoading(false)
+                setMessage({text: 'Request success', status: 'success'})
+            }
+        })
+        .catch(err => {
+            setLoading(false)
+            if(err.response.data)
+                setMessage({text: err.response.data.message, status: 'danger'})
+            else 
+                setMessage({text: 'Server deat', status: 'danger'})
+        })
+    }
+
     return (
         <>
             <Header />
@@ -103,12 +129,13 @@ const Parents = () => {
                                     <td>{kid.darzelis}</td>
                                     <td className="text-alling-center">
                                         <button className="btn btn-danger text-center me-2" onClick={() => handleDelete(kid.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>
-                                        <Link to={'/parents/parents/edit/' + kid.id} className="btn btn-primary"> <i className="bi bi-pen me-1"></i>Edit</Link>
+                                        <Link to={'/parents/parents/edit/' + kid.id} className="btn btn-primary me-1"> <i className="bi bi-pen me-1"></i>Edit</Link>
+                                        <button className="btn btn-dark" onClick={() => handleOrder(kid.id)}>Request</button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </table>    
                 ) : <h5 className="mt-4">No Kids information yet</h5>}
             </div>
         </>

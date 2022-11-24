@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '../components/header/Header'
@@ -20,7 +21,7 @@ const Login = ({ setUser }) => {
     useEffect(() => {
         setLoading(false)
         const token = localStorage.getItem('token')
-        console.log(token)
+
         if (token) {
             navigate('/')
         }
@@ -58,9 +59,9 @@ const Login = ({ setUser }) => {
 
     return (
         <>
-            {loading && (<div className="loading">Kraunasi...</div>)}
+            {loading && (<div className="loading"> ...</div>)}
             <Header />
-            <div className="container">
+            <div  className= "container">
                 <div className="mx-auto  my-5 col-6 d-flex aligns-items-center justify-content-center">
                     <div className="card w-50">
                         <div className="card-body" >
@@ -68,11 +69,15 @@ const Login = ({ setUser }) => {
                             <Message value={message} />
                             <form onSubmit={handleFormSubmit}>
                                 <div className="form-group d-grid gap-2">
-                                    <label>Email</label>
                                     <input type="email" className="form-control" name="email" onChange={handleFormChange} placeholder="name@example.com" />
-                                    <label>Password</label>
+                                    <label>El. pašto adresas</label>
+
+
                                     <input type="password" className="form-control" name="password" onChange={handleFormChange} placeholder="Password" />
-                                    <button className="  btn  btn-dark" type="submit"><i className="bi bi-box-arrow-in-right me-2"></i>Login</button>
+                                    <label>Slaptažodis</label>
+
+                                    <button className="  btn  btn-dark" type="submit">Login</button>
+
                                 </div>
                             </form>
                         </div>
@@ -84,3 +89,4 @@ const Login = ({ setUser }) => {
 }
 
 export default Login
+ 

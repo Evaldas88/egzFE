@@ -33,6 +33,8 @@ const Header = () => {
                         )}
                         {user.loggedIn && (
                             <>
+                                <li><Link to="/orders">Your Request  </Link></li> 
+
                                 <li><Link to="/parents/parents">Parents  </Link></li>
                                 <li><Link to="/logout"><i className="bi bi-box-arrow-in-left me-2"></i>
                                     Logout</Link></li>
@@ -43,7 +45,7 @@ const Header = () => {
                                 <li>
                                     <Link to="/admin/darzelis">Admin</Link>
                                     <ul>
-                                        {/* <li><Link to="/admin/orders">Orders</Link></li> */}
+                                        <li><Link to="/admin/orders">Request</Link></li>
                                         <li><Link to="/admin/darzelis">School</Link></li>
                                         {/* <li><Link to="/admin/countries">Countries</Link></li> */}
                                     </ul>

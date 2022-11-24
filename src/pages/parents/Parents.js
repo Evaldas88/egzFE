@@ -99,7 +99,7 @@ const Parents = () => {
                                     <td>{kid.darzelis}</td>
                                     <td className="text-alling-center">
                                         <button className="btn btn-danger text-center me-2" onClick={() => handleDelete(kid.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>
-                                        <Link to={'/admin/hotels/edit/' + kid.id} className="btn btn-primary"> <i className="bi bi-pen me-1"></i>Edit</Link>
+                                        <Link to={'/parents/parents/edit/' + kid.id} className="btn btn-primary"> <i className="bi bi-pen me-1"></i>Edit</Link>
                                     </td>
                                 </tr>
                             ))}

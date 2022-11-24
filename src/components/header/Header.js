@@ -21,9 +21,10 @@ const Header = () => {
     return (
         <header className="navbar-dark bg-dark">
             <div className="container d-flex justify-content-between">
-                <div className="logo"><h1>Logo</h1></div>
                 <nav>
                     <ul>
+                    <li><Link to="/">Home</Link></li>
+
                         <li><Link to="/login"> </Link></li>
                         {!user.loggedIn && (
                             <>

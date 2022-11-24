@@ -18,40 +18,40 @@ import Darzelis from '../pages/admin/school/Darzelis'
 import NewDarzelis from '../pages/admin/school/NewDarzelis'
 import EditDarzelis from '../pages/admin/school/DarzelisEdit'
 
- 
-    const Router = () => {
-        const [user, setUser] = useState({})
-    
-        useEffect(() => {
-            const token = localStorage.getItem('token')
-            const role = localStorage.getItem('user_role')
-    
-            if(token && role) {
-                setUser({
-                    loggedIn: true,
-                    token,
-                    role,
-                })
-            }
-        }, [])
-    
-        const logoutUser = () => {
+
+const Router = () => {
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const role = localStorage.getItem('user_role')
+
+        if (token && role) {
             setUser({
-                loggedIn: false
+                loggedIn: true,
+                token,
+                role,
             })
         }
-    
+    }, [])
+
+    const logoutUser = () => {
+        setUser({
+            loggedIn: false
+        })
+    }
+
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
 
-                {!user.loggedIn && <Route path="/login"  element={<Login setUser={setUser} />} />}
+                {!user.loggedIn && <Route path="/login" element={<Login setUser={setUser} />} />}
                 {!user.loggedIn && <Route path="/register" element={<Register />} />}
-                {user.loggedIn && user.role === '0' && (
+                {user.loggedIn && user.role == '0' && (
                     <>
-                        <Route path="/admin/orders" element={<OrdersAdmin />} /> 
+                        <Route path="/admin/orders" element={<OrdersAdmin />} />
                         <Route path="/admin/darzelis" element={<Darzelis />} />
                         <Route path="/admin/darzelis/new" element={<NewDarzelis />} />
                         <Route path="/admin/darzelis/edit/:id" element={<EditDarzelis />} />

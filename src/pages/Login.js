@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '../components/header/Header'
@@ -43,8 +42,10 @@ const Login = ({ setUser }) => {
                     setUser({
                         loggedIn: true,
                         token: resp.data.message.token,
-                        role: resp.data.message.role
+                        role: resp.data.message.role,
+    
                     })
+                    console.log(setUser)
                     navigate('/')
                 }
             })
@@ -87,6 +88,7 @@ const Login = ({ setUser }) => {
         </>
     )
 }
+
 
 export default Login
  

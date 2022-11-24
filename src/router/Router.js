@@ -11,6 +11,7 @@ import Register from '../pages/Register'
 // import Orders from '../pages/Orders'
 // import OrdersAdmin from '../pages/admin/Orders'
  import Parents from '../pages/parents/Parents';
+ import  NewParents from '../pages/parents/NewParents';
 import Darzelis from '../pages/admin/school/Darzelis'
 import NewDarzelis from '../pages/admin/school/NewDarzelis'
 import EditDarzelis from '../pages/admin/school/DarzelisEdit'
@@ -56,8 +57,8 @@ const Router = () => {
                 {user.loggedIn && (
                     <>
                         <Route path="/parents/parents" element={<Parents/>} /> 
-                        {/* <Route path="/parents/parents/new" element={<NewParents />} /> 
-                        <Route path="/parents/parentsedit/:id" element={<EditParents />} />  */}
+                         <Route path="/parents/parents/new" element={<NewParents />} />  
+                        {/* <Route path="/parents/parentsedit/:id" element={<EditParents />} />   */}
                     </>
                 )} 
                 <Route path="/logout" element={<Logout logoutUser={logoutUser} />} /> 

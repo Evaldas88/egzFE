@@ -5,7 +5,7 @@ import Message from '../../components/message/Message'
 import axios from 'axios'
 
 const Parents = () => {
-    const [hotels, setHotels] = useState([])
+    const [parents, setParents] = useState([])
     const [message, setMessage] = useState({
         text: '',
         status: ''
@@ -26,7 +26,8 @@ const Parents = () => {
             .then(resp => {
                 setLoading(false)
                 setReload(false)
-                setHotels(resp.data.message)
+                setParents(resp.data.message)
+                console.log(resp.data.message)
             })
             .catch(err => {
                 console.log(err)
@@ -69,44 +70,42 @@ const Parents = () => {
             <div className="pt-5 container " >
                 <div className="row mb-5">
                     <div  >
-                        <h2>Hotels</h2>
+                        <h2>Kids information</h2>
                         <div>
-                            <Link to="/admin/hotels/new" className="btn btn-dark ml-auto">New hotel</Link>
+                            <Link to="/parents/parents/new" className="btn btn-dark ml-auto">Add kids information</Link>
                         </div>
                     </div>
                 </div>
                 <Message value={message} />
-                {hotels.length > 0 ? (
+                {parents.length > 0 ? (
                     <table className="table bg-light table-bordered " >
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Photo</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Duration</th>
-                                <th>Country</th>
+                                 <th>Name</th>
+                                <th>Class</th>
+                                <th>Personal Code</th>
+                                <th>School</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {hotels.map(hotel => (
-                                <tr key={hotel.id} className="text-center">
-                                    <td className="text-center">{hotel.id}</td>
-                                    <td  ><img src={hotel.image} alt={hotel.name} style={{ width: "6rem", height:"3rem" }} /></td>
-                                    <td>{hotel.name}</td>
-                                    <td>{hotel.price}</td>
-                                    <td>{hotel.travel_duration}</td>
-                                    <td>{hotel.country}</td>
+                            {parents.map(kid => (
+                                <tr key={kid.id} className="text-center">
+                                    <td className="text-center">{kid.id}</td>
+                                     <td>{kid.name}</td>
+                                    <td>{kid.class}</td>
+                                    <td>{kid.personalCode}</td>
+                                    <td>{kid.darzelis}</td>
                                     <td className="text-alling-center">
-                                        <button className="btn btn-danger text-center me-2" onClick={() => handleDelete(hotel.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>
-                                        <Link to={'/admin/hotels/edit/' + hotel.id} className="btn btn-primary"> <i className="bi bi-pen me-1"></i>Edit</Link>
+                                        <button className="btn btn-danger text-center me-2" onClick={() => handleDelete(kid.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>
+                                        <Link to={'/admin/hotels/edit/' + kid.id} className="btn btn-primary"> <i className="bi bi-pen me-1"></i>Edit</Link>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                ) : <h5 className="mt-4">No orders yet</h5>}
+                ) : <h5 className="mt-4">No Kids information yet</h5>}
             </div>
         </>
     )

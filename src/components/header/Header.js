@@ -24,7 +24,7 @@ const Header = () => {
                 <div className="logo"><h1>Logo</h1></div>
                 <nav>
                     <ul>
-                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/login"> </Link></li>
                         {!user.loggedIn && (
                             <>
                                 <li><Link to="/login"><i className="bi bi-box-arrow-in-right me-2"></i>Login</Link></li>
@@ -33,23 +33,23 @@ const Header = () => {
                         )}
                         {user.loggedIn && (
                             <>
-                                {/* <li><Link to="/orders">Your orders  </Link></li> */}
+                                <li><Link to="/parents/parents">Parents  </Link></li>
                                 <li><Link to="/logout"><i className="bi bi-box-arrow-in-left me-2"></i>
                                     Logout</Link></li>
                             </>
                         )}
-                        {/* {user.loggedIn && user.role === '0' && (
+                        {user.loggedIn && user.role === '0' && (
                             <>
                                 <li>
                                     <Link to="/admin/orders">Admin</Link>
                                     <ul>
                                         <li><Link to="/admin/orders">Orders</Link></li>
-                                        <li><Link to="/admin/hotels">Hotels</Link></li>
-                                        <li><Link to="/admin/countries">Countries</Link></li>
+                                        <li><Link to="/admin/darzelis">School</Link></li>
+                                        {/* <li><Link to="/admin/countries">Countries</Link></li> */}
                                     </ul>
                                 </li>
                             </>
-                        )} */}
+                        )}
                     </ul>
                 </nav>
             </div>

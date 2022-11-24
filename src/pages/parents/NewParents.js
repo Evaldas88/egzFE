@@ -7,7 +7,9 @@ import axios from 'axios'
 const NewParents = () => {
     const [form, setForm] = useState({
         name: '',
+        lname: '',
         class: '',
+        birthday: '',
         personalCode: '',
          darzelis_id: 0
     })
@@ -94,12 +96,20 @@ const NewParents = () => {
                         <input type="text" name="name" className="form-control m-1" onChange={handleFormChange}   />
                     </div>
                     <div className="form-group">
+                        <label className="mt-2">Kid Surname:</label>
+                        <input type="text" name="lname" className="form-control m-1" onChange={handleFormChange}   />
+                    </div>
+                    <div className="form-group">
                         <label className="mt-2">Personal code :</label>
                         <input type="number" name="personalCode" className="form-control mt-1" onChange={handleFormChange}   />
                     </div>
                     <div className="form-group">
                         <label className="mt-2">Class :</label>
                         <input type="text" name="class" className="form-control mt-1" onChange={handleFormChange}   />
+                    </div>
+                    <div className="form-group">
+                        <label className="mt-2">Birthday :</label>
+                        <input type="text" name="birthday" className="form-control mt-1" onChange={handleFormChange}   />
                     </div>
                     <div className="form-group">
                         <label className="mt-2">School:</label>

@@ -21,12 +21,11 @@ const Header = () => {
     return (
         <header className="navbar-dark bg-dark">
             <div className="container d-flex justify-content-between">
+                <div className=" "></div>
                 <nav>
                     <ul>
-                    <li><Link to="/">Home</Link></li>
-
-                        <li><Link to="/login"> </Link></li>
-                        {!user.loggedIn && (
+                        <li><Link to="/">Home</Link></li>
+                         {!user.loggedIn && (
                             <>
                                 <li><Link to="/login"><i className="bi bi-box-arrow-in-right me-2"></i>Login</Link></li>
                                 <li><Link to="/register">Register</Link></li>
@@ -42,9 +41,9 @@ const Header = () => {
                         {user.loggedIn && user.role === '0' && (
                             <>
                                 <li>
-                                    <Link to="/admin/orders">Admin</Link>
+                                    <Link to="/admin/darzelis">Admin</Link>
                                     <ul>
-                                        <li><Link to="/admin/orders">Orders</Link></li>
+                                        {/* <li><Link to="/admin/orders">Orders</Link></li> */}
                                         <li><Link to="/admin/darzelis">School</Link></li>
                                         {/* <li><Link to="/admin/countries">Countries</Link></li> */}
                                     </ul>

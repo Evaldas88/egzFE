@@ -78,13 +78,15 @@ const Parents = () => {
                 </div>
                 <Message value={message} />
                 {parents.length > 0 ? (
-                    <table className="table bg-light table-bordered " >
+                    <table className="table bg-light table-bordered text-center " >
                         <thead>
                             <tr>
                                 <th>#</th>
                                  <th>Name</th>
+                                 <th>Surname</th>
                                 <th>Class</th>
                                 <th>Personal Code</th>
+                                <th>Birthday</th>
                                 <th>School</th>
                                 <th></th>
                             </tr>
@@ -94,8 +96,10 @@ const Parents = () => {
                                 <tr key={kid.id} className="text-center">
                                     <td className="text-center">{kid.id}</td>
                                      <td>{kid.name}</td>
+                                     <td>{kid.lname}</td>
                                     <td>{kid.class}</td>
                                     <td>{kid.personalCode}</td>
+                                    <td>{kid.birthday}</td>
                                     <td>{kid.darzelis}</td>
                                     <td className="text-alling-center">
                                         <button className="btn btn-danger text-center me-2" onClick={() => handleDelete(kid.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>

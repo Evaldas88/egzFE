@@ -33,7 +33,7 @@ const EditParents = () => {
     useEffect(() => {
         setLoading(true)
 
-        axios.get('http://127.0.0.1:8000/api/darzelis')
+        axios.get('http://127.0.0.1:8000/api/school')
             .then(resp => {
                 setLoading(false)
                 setSchool(resp.data.message)
@@ -47,7 +47,7 @@ const EditParents = () => {
                 //navigate('/login')
             })
 
-        axios.get('http://127.0.0.1:8000/api/tevai/' + id)
+        axios.get('http://127.0.0.1:8000/api/parents/' + id)
             .then(resp => {
                 setLoading(false)
                 setForm({
@@ -56,7 +56,7 @@ const EditParents = () => {
                     class: resp.data.message[0].class,
                     personalCode: resp.data.message[0].personalCode,
                     birthday: resp.data.message[0].birthday,
-                    darzelis_id: resp.data.message[0].darzelis_id || ''
+                    schools_id: resp.data.message[0].schools_id || ''
 
                 })
                 console.log(resp);
@@ -80,7 +80,7 @@ const EditParents = () => {
             formData.append(key, form[key])
         }
 
-        axios.post('http://127.0.0.1:8000/api/tevai/' + id, formData, {
+        axios.post('http://127.0.0.1:8000/api/parents/' + id, formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data',
@@ -138,7 +138,7 @@ const EditParents = () => {
 
                     <div className="form-group">
                         <label className=" mt-3">School:</label>
-                        <select name="darzelis_id" className="form-control mt-2" onChange={handleFormChange} value={form.darzelis_id}>
+                        <select name="schools_id" className="form-control mt-2" onChange={handleFormChange} value={form.schools_id}>
                             <option value="0">Choose School</option>
                             {school.map(school => <option key={school.id} value={school.id}>{school.name}</option>)}
                         </select>

@@ -17,7 +17,7 @@ const EditDarzelis = () => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
     const token = localStorage.getItem('token')
-    const url ='http://127.0.0.1:8000/api/darzelis/'
+    const url ='http://127.0.0.1:8000/api/school/'
 
     useEffect(() => {
         setLoading(true)
@@ -27,6 +27,7 @@ const EditDarzelis = () => {
             setLoading(false)
             setForm({
                 name: resp.data.message[0].name,
+                address: resp.data.message[0].address,
                 code: resp.data.message[0].code,
             })
         })
@@ -86,6 +87,10 @@ const EditDarzelis = () => {
                     <div className="form-group">
                         <label className='mt-2'>School name:</label>
                         <input type="text" name="name" className="form-control mt-2" onChange={handleFormChange} value={form.name} />
+                    </div>
+                    <div className="form-group">
+                        <label className='mt-2'>School Address:</label>
+                        <input type="text" name="address" className="form-control mt-2" onChange={handleFormChange} value={form.address} />
                     </div>
                     <div className="form-group">
                         <label className='mt-2'>School Code:</label>

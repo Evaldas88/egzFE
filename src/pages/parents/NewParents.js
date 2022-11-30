@@ -32,7 +32,7 @@ const NewParents = () => {
     useEffect(() => {
         setLoading(true)
 
-        axios.get('http://127.0.0.1:8000/api/darzelis')
+        axios.get('http://127.0.0.1:8000/api/school')
         .then(resp => {
             setLoading(false)
             setDarzelis(resp.data.message)
@@ -56,7 +56,7 @@ const NewParents = () => {
             formData.append(key, form[key])
         }
 
-        axios.post('http://127.0.0.1:8000/api/tevai', formData, {
+        axios.post('http://127.0.0.1:8000/api/parents', formData, {
             headers: { 
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data', 

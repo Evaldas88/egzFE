@@ -94,6 +94,7 @@ const Orders = () => {
                             <tr>
                                 <th>User</th>
                                 <th>Name</th>
+                                <th>Surname</th>
                                 <th>Class</th>
                                 <th>personal Code</th>
                                 <th>Birthday</th>
@@ -106,7 +107,8 @@ const Orders = () => {
                             {orders.map(order => (
                                 <tr key={order.id}>
                                     <td>{order.user_id}</td>
-                                    <td>{order.tevai_name}</td>
+                                    <td>{order.parent_name}</td>
+                                    <td>{order.parent_lname}</td>
                                      <td>{order.class}</td>
                                     <td>{order.birthday}</td>
                                     <td>{order.personalCode}</td>

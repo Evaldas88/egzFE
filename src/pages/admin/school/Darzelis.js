@@ -5,7 +5,7 @@ import Message from '../../../components/message/Message'
 import axios from 'axios'
 
 const Darzelis = () => {
-    const [darzelis, setDarzelis] = useState([])
+    const [school, setSchool] = useState([])
     const [message, setMessage] = useState({
         text: '',
         status: ''
@@ -14,7 +14,7 @@ const Darzelis = () => {
     const [reload, setReload] = useState(false)
     // const navigate = useNavigate();
     const token = localStorage.getItem('token')
-     const url = 'http://127.0.0.1:8000/api/darzelis'
+     const url = 'http://127.0.0.1:8000/api/school'
     useEffect(() => {
         setLoading(true)
         axios.get( url, {
@@ -22,7 +22,7 @@ const Darzelis = () => {
         })
             .then(resp => {
                 setLoading(false)
-                setDarzelis(resp.data.message)
+                setSchool(resp.data.message)
             })
             .catch(err => {
                 setLoading(false)
@@ -67,21 +67,23 @@ const Darzelis = () => {
                     </div>
                 </div>
                 <Message value={message} />
-                {darzelis.length > 0 ? (
+                {school.length > 0 ? (
                     <table className="table text-center table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Address</th>
                                 <th>Code</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {darzelis.map(school => (
+                            {school.map(school => (
                                 <tr key={school.id}>
                                     <td>{school.id}</td>
                                     <td>{school.name}</td>
+                                    <td>{school.address}</td>
                                     <td>{school.code}</td>
                                     <td>
                                         <button className="btn btn-danger me-2" onClick={() => handleDelete(school.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>

@@ -5,6 +5,7 @@ import Message from '../../components/message/Message'
 import axios from 'axios'
 
 const Parents = () => {
+ 
     const [parents, setParents] = useState([])
     const [message, setMessage] = useState({
         text: '',
@@ -14,7 +15,7 @@ const Parents = () => {
     const [reload, setReload] = useState(false)
     const navigate = useNavigate();
     const token = localStorage.getItem('token')
-    const url = 'http://127.0.0.1:8000/api/tevai'
+    const url = 'http://127.0.0.1:8000/api/parents'
     const [orders, setOrders] = useState([])
 
 
@@ -69,7 +70,7 @@ const Parents = () => {
         setLoading(true)
 
         axios.post('http://127.0.0.1:8000/api/orders', {
-            tevai_id: id
+            parents_id: id
         }, 
         {
             headers: { Authorization: `Bearer ${token}` }
@@ -77,6 +78,8 @@ const Parents = () => {
         .then(resp => {
             if (resp.status === 200) {
                 setLoading(false)
+                console.log(resp)
+
                 setMessage({text: 'Request success', status: 'success'})
             }
         })
@@ -88,6 +91,7 @@ const Parents = () => {
                 setMessage({text: 'Server deat', status: 'danger'})
         })
     }
+  
 
     return (
         <>
@@ -126,7 +130,7 @@ const Parents = () => {
                                     <td>{kid.class}</td>
                                     <td>{kid.personalCode}</td>
                                     <td>{kid.birthday}</td>
-                                    <td>{kid.darzelis}</td>
+                                    <td>{kid.school}</td>
                                     <td className="text-alling-center">
                                         <button className="btn btn-danger text-center me-2" onClick={() => handleDelete(kid.id)}><i className="bi bi-trash3 me-1"></i>Delete</button>
                                         <Link to={'/parents/parents/edit/' + kid.id} className="btn btn-primary me-1"> <i className="bi bi-pen me-1"></i>Edit</Link>

@@ -7,6 +7,7 @@ import axios from 'axios'
 const NewDarzelis = () => {
     const [form, setForm] = useState({
         name: '',
+        address:'',
         code: ''
     })
     const [message, setMessage] = useState({
@@ -24,7 +25,7 @@ const NewDarzelis = () => {
         e.preventDefault()
         setLoading(true)
 
-        axios.post('http://127.0.0.1:8000/api/darzelis', form, {
+        axios.post('http://127.0.0.1:8000/api/school', form, {
             headers: { 
                 Authorization: `Bearer ${token}`
             }
@@ -59,6 +60,10 @@ const NewDarzelis = () => {
                     <div className="form-group">
                         <label  className=" mt-2">School name:</label>
                         <input type="text" name="name" className="form-control mt-2" onChange={handleFormChange}   />
+                    </div>
+                    <div className="form-group">
+                        <label  className="  mt-2">Address:</label>
+                        <input type="text" name="address" className="form-control mt-2" onChange={handleFormChange}  />
                     </div>
                     <div className="form-group">
                         <label  className="  mt-2">Code:</label>
